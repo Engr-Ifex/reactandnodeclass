@@ -10,9 +10,10 @@ function Register() {
   const navigate = useNavigate()
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     // API -> fetch(), axios()
     // // http://localhost:5000/register
+    e.preventDefault()
    try{
     const response =await axios.post('http://localhost:5000/register', {
       username, 
@@ -28,10 +29,6 @@ function Register() {
    }
 
   }
-
-  useEffect(() =>{
-     handleSubmit()
-  }, [])
 
 
   return (
