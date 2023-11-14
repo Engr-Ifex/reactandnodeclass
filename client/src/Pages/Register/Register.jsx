@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -28,6 +28,12 @@ function Register() {
    }
 
   }
+
+  useEffect(() =>{
+     handleSubmit()
+  }, [])
+
+
   return (
     <div>
         <h1 className="text-center">Register</h1>
