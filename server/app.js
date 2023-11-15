@@ -10,6 +10,10 @@ const mongoose = require('mongoose')
 const port = process.env.PORT
 // middleware
 
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}))
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
@@ -19,10 +23,6 @@ app.listen(port, () => {
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-app.use(cors({
-    origin: 'http://localhost:5173/',
-    credentials: true
-}))
 
 
 mongoose.connect(process.env.MONGODB_CONNECT)
@@ -86,7 +86,7 @@ app.post('/login', async (req, res) => {
    }
    catch(err){
       console.error(err)
-   }
+    }
     
 
 })

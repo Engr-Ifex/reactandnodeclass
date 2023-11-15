@@ -20,7 +20,7 @@ function Register() {
       email,
       password
     })
-    console.log(response)
+    console.log(response?.data?.message)
 
     navigate('/login')
    }
