@@ -11,8 +11,6 @@ function Register() {
 
 
   const handleSubmit = async (e) => {
-    // API -> fetch(), axios()
-    // // http://localhost:5000/register
     e.preventDefault()
    try{
     const response =await axios.post('http://localhost:5000/register', {
