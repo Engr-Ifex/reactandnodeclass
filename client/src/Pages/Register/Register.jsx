@@ -23,6 +23,7 @@ function Register() {
     navigate('/login')
    }
    catch(err){
+    console.log(err?.response?.data)
     console.log(err)
    }
 
@@ -32,11 +33,11 @@ function Register() {
   return (
     <div>
         <h1 className="text-center">Register</h1>
-        <form action="">
+        <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} name='username'/><br/>
             <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} name='email'/><br/>
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} name='password'/><br/>
-            <input type="submit" value="Submit" onClick={handleSubmit} />
+            <input type="submit" value="Submit" />
         </form>
     </div>
   )
