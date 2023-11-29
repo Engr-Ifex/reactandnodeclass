@@ -25,6 +25,7 @@ const userRegister = async (req, res) => {
 }
 
 const userLogin = async (req, res) => {
+  // COOKIE -> Container, where we token ----- > LOCALSTROGE, SESSION 
   try {
     const { email, password } = req.body
     const user = await userModel.findOne({ email })
@@ -39,10 +40,32 @@ const userLogin = async (req, res) => {
     const token = jwt.sign({ user: user._id }, process.env.SECRET, {
       expiresIn: '1hr'
     })
+
+    // ms
+    res.cookie('usertoken', token, {maxAge: 1000 * 60 * 60 * 24 * 3})
+    
     res.status(200).json({ message: 'Login Successful', token, user })
   } catch (err) {
     console.error(err)
   }
 }
 
-module.exports = { userRegister, userLogin }
+// Authorization
+
+// get 
+
+const showAllUsers = async (req, res) => {
+  try{
+    const user = await userModel.find()
+    console.log(user)
+    res.status(202).json({success: true, user})
+  }
+  catch(err){
+    console.log(err)
+    res.status(400).json({suucess: false, msg: err.message})
+  }
+}
+
+
+
+module.exports = { userRegister, userLogin, showAllUsers }
