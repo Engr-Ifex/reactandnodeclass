@@ -1,22 +1,8 @@
-import React, {useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function Home() {
-
-  const getAllUsers = async () => {
-        try {
-          const response = await axios.get('http://localhost:5000/allusers')
-          console.log(response?.data)
-        }
-        catch(err){
-          console.log(err)
-        }
-  }
-
-  useEffect(() => {
-    getAllUsers()
-  }, [])
   
   return (
     <div>

@@ -15,7 +15,7 @@ function Login() {
       password
     })
     console.log(response?.data)
-    navigate('/')
+    navigate('/dashboard')
   }
 
   return (
